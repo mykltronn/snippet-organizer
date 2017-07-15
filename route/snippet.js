@@ -96,14 +96,10 @@ router.put('/:id', function(req, res) {
         if(req.body.title) snippet.title = req.body.title;
         if(req.body.body) snippet.body = req.body.body;
         if(req.body.notes) snippet.notes = req.body.notes;
-        if(req.body.lang) snippet.lang = req.body.lang;
-        if(req.body.tag) snippet.tags.push(req.body.tag);
+        if(req.body.lang) snippet.lang = req.body.lang.toLowerCase();
+        if(req.body.tag) snippet.tags.push(req.body.tag.toLowerCase());
 
-        snippet.update(function(err){
-            // if (err) res.send(err)
-            // console.log("snippet edited" + snippet);
-            // res.send('snippet edited! \n' + snippet);
-        }).then(function(err){
+        snippet.save(function(err){
             if (err) res.send(err)
             console.log("snippet edited" + snippet);
             res.send('snippet edited! \n' + snippet);
@@ -129,14 +125,40 @@ router.get('/:id', function(req, res) {
 })
 
 // get all snippets by :lang
-router.get('/:lang', function(req, res) {
 
-})
 
 // get all snippets by :tags
-router.get('/:tag', function(req, res) {
+router.get('/tag/:tag', function(req, res) {
+    Snippet.find({ tags: req.params.tag.toLowerCase()}, function(err, snippet) {
+        res.send(snippet)
+    })
+
 
 })
 
 
 module.exports = router;
+// Activity.find({}, function(err, activity) {
+//         console.log(activity);
+//             for (i=0; i < activity.length; i++){
+//                 console.log(activity[i]);
+//                     for (j=0; j < activity[i].stat.length; j++){
+//                         if (activity[i].stat[j]._id ==  req.params.stat_id) {
+//                             var deletePosition = activity[i].stat.indexOf(activity[i].stat[j])
+//                             console.log(deletePosition);
+//                             console.log("removing: " + activity[i].stat[j]);
+//                             activity[i].stat.splice(deletePosition, 1);
+//                             activity[i].save(function(err) {
+//                               if (err) {
+//                                   console.log("something went wrong saving the altered stat");
+//                                   res.send(err)
+//                               }
+//                               else{
+//                                   console.log("deleted");
+//                                   res.send("stat removed")
+//                               }
+//                             })
+//                         }
+//                 }
+//             }
+//         })
