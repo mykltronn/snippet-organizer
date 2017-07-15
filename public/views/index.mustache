@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Snippet Organizer</title>
+
+  </head>
+  <body>
+      <header>
+          <nav class="header-nav">
+              <li><a href=/api>home</a></li>
+              <li><a href="/api/view">snippets</a></li>
+              <li><a href="/api/mysnippets">my snippets</a></li>
+          </nav>
+
+          <h1>The <em>{Snippet}=</em> Organizer</h1>
+      </header>
+
+
+      <form class="registration" action="/" method="post">
+          <h1>registration form</h1>
+          <div class="reg-form">
+              <label for="username">username</label>
+              <input type="text" name="username"><br>
+          </div>
+          <div class="reg-form">
+              <label for="password">password</label>
+              <input type="text" name="password"><br>
+          </div>
+          <div class="reg-form">
+              <label for="passconfirm">confirm password</label>
+              <input type="text" name="passconfirm"><br>
+          </div>
+          <div class="reg-form">
+              <label for="email">email address</label>
+              <input type="email" name="email">
+          </div>
+      </form>
+
+      <div class="table-box">
+          <table id="api-arch-table">
+              <h3>API architecture</h3>
+              <tr id="table-header">
+                  <td></td>
+                  <td>URL</td>
+                  <td>Action</td>
+              </tr>
+              <tr>
+                  <td>GET</td>
+                  <td>/api/snippet</td>
+                  <td>View all snippets</td>
+              </tr>
+              <tr>
+                  <td>POST</td>
+                  <td>/api/snippet</td>
+                  <td>Create new snippet</td>
+              </tr>
+              <tr>
+                  <td>GET</td>
+                  <td>/api/snippet/:snippet_id</td>
+                  <td>Find a particular snippet</td>
+              </tr>
+              <tr>
+                  <td>PUT</td>
+                  <td>/api/snippet/:snippet_id</td>
+                  <td>Edit existing snippet</td>
+              </tr>
+              <tr>
+                  <td>DELETE</td>
+                  <td>/api/snippet/:snippet_id</td>
+                  <td>Delete snippet</td>
+              </tr>
+              <tr>
+                  <td>GET</td>
+                  <td>/api/snippet/language/:language</td>
+                  <td>Find snippets by language</td>
+              </tr>
+              <tr>
+                  <td>GET</td>
+                  <td>/api/snippet/tag/:tag</td>
+                  <td>Find snippets by tag</td>
+              </tr>
+          </table>
+        </div>
+
+
+  </body>
+</html>

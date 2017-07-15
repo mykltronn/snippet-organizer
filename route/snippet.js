@@ -37,33 +37,10 @@ router.use(passport.authenticate('basic', {session: false}))
 //===========================================================
 // routes
 
-/* --> //add user for test
-router.post('/', function(req, res) {
-    console.log("trying to add new user");
-
-    const newSnippet = new User();
-    newSnippet.username = req.body.username;
-    newSnippet.password = req.body.password
-
-    newSnippet.save(function(err){
-      if (err){
-        res.send(err)
-      }
-      else {
-        console.log("new user added to db");
-        res.send('new user added');
-      }
-
-    })
-})
-
- <!-- */
-
 // get all snippets
 router.get('/', function(req, res) {
     Snippet.find(function(err, snippets) {
       if(err) res.send(err);
-
       res.json(snippets);
     })
 })
@@ -79,14 +56,9 @@ router.post('/', function(req, res) {
     newSnippet.tags.push(req.body.tag);
 
     newSnippet.save(function(err){
-      if (err){
-        res.send(err)
-      }
-      else {
+        if (err) res.send(err)
         console.log("new snippet added to db");
         res.send('new snippet added! \n' + newSnippet);
-      }
-
     })
 })
 
