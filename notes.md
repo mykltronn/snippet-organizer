@@ -1,6 +1,14 @@
+## Next up:
 
-import style from './style' === import './public/style.css'
-style={ style.uniqueName }  === className='uniqueName'
+- Add tests.
 
+- Add minimal front-end.
 
-plan for routes:
+- Deploy on Heroku.
+
+## For Hard Mode:
+
+- add session to test ownership
+- add "star" feature to DB
+- -- could be as simple as adding stars: [username, username, username]
+- add sorting feature for front-end display of snippets
