@@ -8,7 +8,7 @@ const route = require('./route/snippet.js')
 app.use(morgan('dev'));
 //===============================
 // routes
-app.use('/api/snippet', route)
+// app.use('/api/snippet', route)
 
 app.listen(8080, function(req, res){
   console.log("VVV VVV    VVV VVV     VVV VVV");
