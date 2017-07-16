@@ -2,6 +2,9 @@
   "name": "eigth-week-project",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "6.10.3"
+  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "bluebird": "^3.5.0",
