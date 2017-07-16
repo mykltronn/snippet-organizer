@@ -26,11 +26,11 @@ describe('POST /api', function() {
                 assert(JSON.parse(body).username)
             })
             .end(done)
-    })
+    })git 
 })
 
 describe('GET /api/snippet', function() {
-    it("should return json", function() {
+    it("should return json", function(done) {
         request(app)
             .get('/api/snippet')
             .expect("Content-Type", "/json")
@@ -39,13 +39,13 @@ describe('GET /api/snippet', function() {
 })
 
 describe('POST /api/snippet', function() {
-    it("should contain body with json", function() {
+    it("should contain body with json", function(done) {
         request(app)
             .post('/api/snippet')
             .expect("Content-Type", "/json")
             .end(done)
     })
-    it("should contain a snippet title", function() {
+    it("should contain a snippet title", function(done) {
         request(app)
             .post('/api/snippet')
             .expect(function(err, res, body) {
@@ -58,28 +58,28 @@ describe('POST /api/snippet', function() {
 
 
 describe('GET /api/snippet/:id', function() {
-    it("should return json", function() {
+    it("should return json", function(done) {
         request(app)
             .get('/ap/snippet/:id')
             .expect("Content-Type", "/json")
             .end(done)
     })
-}
+})
 
 describe('GET /api/snippet/language/:lang', function() {
-    it("should return json", function() {
+    it("should return json", function(done) {
         request(app)
             .get('/ap/snippet/language/:lang')
             .expect("Content-Type", "/json")
             .end(done)
     })
-}
+})
 
 describe('GET /api/snippet/tag/:tag', function() {
-    it("should return json", function() {
+    it("should return json", function(done) {
         request(app)
             .get('/ap/snippet/tag/:tag')
             .expect("Content-Type", "/json")
             .end(done)
     })
-}
+})
