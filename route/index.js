@@ -4,6 +4,10 @@ const route = require('./snippet.js');
 const bodyParser = require('body-parser');
 const Snippet = require('../model/snippetSchema.js');
 const User = require('../model/userSchema.js');
+const mongoose = require('mongoose');
+mongoose.Promise = require('bluebird');
+// dev mongoose.connect('mongodb://localhost:27017/snippetdb');
+mongoose.connect('mongodb://<dbuser>:<dbpassword>@ds043982.mlab.com:43982/snippetdb')
 //===============================
 // middleware
 router.use(bodyParser.urlencoded({ extended : false }));
@@ -25,11 +29,8 @@ router.route('/')
 
         newUser.save(function(err){
             if (err) res.send(err)
-            else {
-                console.log("new user added to db");
-                req.session.registered = true
-                res.redirect('/');
-            }
+            req.session.registered = true
+            res.redirect('/');
         })
     })
 
