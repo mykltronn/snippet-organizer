@@ -11,7 +11,8 @@ const BasicStrategy = require('passport-http').BasicStrategy;
 const bcrypt = require('bcryptjs')
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
-mongoose.connect('mongodb://localhost:27017/snippetdb');
+//dev use mongoose.connect('mongodb://localhost:27017/snippetdb');
+mongoose.connect('mongodb://<dbuser>:<dbpassword>@ds043982.mlab.com:43982/snippetdb')
 //===========================================================
 //authentication
 var activeUser
