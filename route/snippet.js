@@ -37,6 +37,18 @@ router.use(passport.authenticate('basic', {session: false}))
 //===========================================================
 // routes
 
+// front-end views
+router.route('/view')
+    .get(function(req, res) {
+        Snippet.find(function(err, snippets) {
+          if(err) res.send(err);
+          res.render('view.mustache', {snippets: snippets})
+        })
+    })
+    // .post(function(req, res) {
+    //
+    // })
+
 // get all snippets
 router.get('/', function(req, res) {
     Snippet.find(function(err, snippets) {
@@ -56,9 +68,9 @@ router.post('/', function(req, res) {
     newSnippet.tags.push(req.body.tag);
 
     newSnippet.save(function(err){
-        if (err) res.send(err)
+        // if (err) res.send(err)
         console.log("new snippet added to db");
-        res.send('new snippet added! \n' + newSnippet);
+        res.redirect('/view')
     })
 })
 

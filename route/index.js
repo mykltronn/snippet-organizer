@@ -1,15 +1,21 @@
 const express = require('express');
 const router = express.Router();
-const route = require('./snippet.js')
+const route = require('./snippet.js');
+const bodyParser = require('body-parser');
+const Snippet = require('../model/snippetSchema.js');
+const User = require('../model/userSchema.js');
 //===============================
 // middleware
+router.use(bodyParser.urlencoded({ extended : false }));
+router.use(bodyParser.json());
 //===============================
 // routes
 router.use('/snippet', route)
 
 router.route('/')
     .get(function(req, res) {
-        res.render('index.mustache')
+        if (!req.session.registered) req.session.registered = false
+        res.render('index.mustache', {registered: req.session.registered})
     })
     .post(function(req, res) {
         const newUser = new User();
@@ -21,7 +27,8 @@ router.route('/')
             if (err) res.send(err)
             else {
                 console.log("new user added to db");
-                res.send('new user added');
+                req.session.registered = true
+                res.redirect('/');
             }
         })
     })

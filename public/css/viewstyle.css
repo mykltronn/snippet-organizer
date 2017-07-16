@@ -1,0 +1,202 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+input {
+    z-index: 2;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+.background-div {
+    z-index: 1;
+    position: absolute;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/curlybraces.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.045;
+}
+
+.header-nav {
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    height: 50px;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding: 30px;
+}
+
+.header-nav li {
+    display: inline;
+    margin: 0px 75px;
+}
+
+li a {
+    background-color: darkgrey;
+    color: white;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 3px;
+    border: 1px solid darkgrey;
+}
+
+li, a {
+    text-decoration: none;
+    list-style: none;
+}
+
+header h1 {
+    text-align: right;
+    margin: 100px;
+    padding-right: 40px;
+}
+
+.snippet {
+    width: 100%;
+    margin: 50px 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+h3 {
+    display: inline;
+}
+
+.snippet-title {
+    margin-left: 10px;
+    width: 100%;
+}
+
+code {
+    width: 45%;
+    height: 200px;
+    border: 1px solid lightgrey;
+    background-color: #f2f2f2;
+    box-shadow: inset 0px 0px 123px -20px rgba(0,0,0,0.26);
+    font-family: 'Inconsolata', monospace;
+    overflow: auto;
+    padding: 20px 10px;
+    margin: 10px;
+}
+
+.snippet-info-box {
+    width: 45%;
+}
+
+.snippet-info-box h3 {
+    padding: 10px 0px;
+}
+
+.snippet-info-box p {
+    margin: 30px;
+    border-left: 5px solid darkgrey;
+    padding: 30px;
+    font-style: italic;
+    color: darkgrey;
+}
+
+.tags {
+    width: 70%;
+    font-style: italic;
+}
+
+.stars {
+    width: 25%;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.snippets-box {
+    width: 65vw;
+    z-index: 2;
+}
+
+.snippets-form {
+    width: 30vw;
+    z-index: 2;
+}
+
+.snippets-form legend {
+    margin: 50px 0px;
+    font-size: 1.17em;
+    font-weight: bold;
+}
+
+.new-snip-title input {
+    display: inline;
+    padding: 5px;
+    font-family: 'Inconsolata', monospace;
+    font-size: 16px;
+    margin-left: 5px;
+}
+
+.new-snip-lang {
+    margin: 30px 0px 10px 5px;
+    display: inline;
+}
+
+
+.new-snip-body {
+    margin: 30px 0px;
+}
+
+.new-snip-body textarea {
+    height: 300px;
+    width: 100%;
+    font-family: 'Inconsolata', monospace;
+    font-size: 16px;
+    overflow: auto;
+    padding: 10px 10px;
+    margin: 2px 20px 10px 0px;
+}
+
+.new-snip-tag input {
+    display: inline;
+    padding: 5px;
+    font-family: 'Inconsolata', monospace;
+    font-size: 16px;
+    color: grey;
+    margin: 0px 0px 25px 5px;
+    width: 85px;
+}
+
+.new-snip-notes textarea {
+    height: 150px;
+    width: 100%;
+    font-family: 'Inconsolata', monospace;
+    font-size: 16px;
+    color: grey;
+    overflow: auto;
+    padding: 20px 10px;
+    margin: 2px 20px 20px 0px;
+}
+
+.new-snippet button {
+    border-radius: 3px;
+    font-size: 20px;
+    padding: 8px;
+    background-color: darkgrey;
+    color: white;
+    margin: 0px 0px 90px 120px;
+}

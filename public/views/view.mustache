@@ -3,23 +3,91 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata|Montserrat:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/viewstyle.css">
     <title>Snippet Organizer</title>
-
   </head>
+
   <body>
+    <div class="background-div"></div>
+
       <header>
           <nav class="header-nav">
               <li><a href=/api>home</a></li>
-              <li><a href="/api/view">snippets</a></li>
-              <li><a href="/api/mysnippets">my snippets</a></li>
+              <li><a href="/api/snippet/view">snippets</a></li>
           </nav>
 
-          <h1>The <em>{Snippet}=</em> Organizer</h1>
+          <h1>The <em>{Snippet}</em> Organizer</h1>
       </header>
+      <main>
+          <div class="snippets-box">
+    {{#snippets}}
+                <div class="snippet">
+                    <div class="snippet-title"><h3>{{title}},</h3> <span> {{lang}}</span></div>
+                    <code>{{body}}</code>
+                    <div class="snippet-info-box">
+                        <h3>{{username}}</h3>
+                        <h4>{{date}}</h4>
+                        {{#notes}}
+                        <p>{{.}}</p>
+                        {{/notes}}
+                        {{^notes}}
+                        <p>...user did not provide a description</p>
+                        {{/notes}}
+                    </div>
+                    <ul class="tags">
+                        {{#tags}}
+                        <span class="tag">#{{.}}, </span>
+                        {{/tags}}
+                    </ul>
+                    <ul class="stars">
+                        {{#starred}}
+                        <span>{{.}}</span>
+                        {{/starred}}
+                    </ul>
+                </div>
+    {{/snippets}}
+        </div>
+    </div>
+    <div class="snippets-form">
+        <form class="new-snippet" action="/api/snippet" method="post">
+            <legend>create a new snippet</legend>
 
+            <div class="new-snip-title">
+                <label for="title">snippet name</label>
+                <input type="text" name="title">
+            </div>
+            <span id="select-lang">language</span>
+            <select class="new-snip-lang" name="lang">
 
+                <option value="html">HTML</option>
+                <option value="css">CSS</option>
+                <option value="javascript" selected>JavaScript</option>
+                <option value="ruby">Ruby</option>
+                <option value="java">Java</option>
+                <option value="reactjs">React JS</option>
+                <option value="nodejs">Node JS</option>
+                <option value="php">PHP</option>
+            </select>
 
+            <div class="new-snip-body">
+                <label for="body">snippet</label><br>
+                <textarea name="body" placeholder="{...add your snippet here}"></textarea>
+            </div><br>
+
+            <div class="new-snip-tag">
+                <label for="tag">add a tag</label>
+                <input type="text" name="tag" placeholder="tag">
+            </div>
+
+            <div class="new-snip-notes">
+                <label for="notes">description</label><br>
+                <textarea name="notes" placeholder="...what does it do?"></textarea>
+            </div>
+
+            <button type="submit" name="new-snip">create snippet</button>
+        </form>
+    </div>
+    </main>
   </body>
 </html>
