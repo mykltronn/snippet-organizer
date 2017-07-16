@@ -32,3 +32,5 @@ app.listen(8080, function(req, res){
   console.log("VVV VVV    VVV VVV     VVV VVV");
   console.log("Server running in DEV mode on http://localhost:8080");
 });
+
+module.exports = app;

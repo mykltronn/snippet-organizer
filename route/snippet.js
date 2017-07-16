@@ -14,10 +14,9 @@ mongoose.Promise = require('bluebird');
 mongoose.connect('mongodb://localhost:27017/snippetdb')
 //===========================================================
 //authentication
-var currentUser;
 passport.use(new BasicStrategy(
   function(username, password, done) {
-    currentUser = username;
+    req.session.activeUser = username;
     console.log("basic strategy is running");
     User.findOne( { username: username }, function(err, user){
       if (user && bcrypt.compareSync(password, user.password)){
@@ -60,7 +59,7 @@ router.get('/', function(req, res) {
 // post new snippet
 router.post('/', function(req, res) {
     const newSnippet = new Snippet();
-    newSnippet.username = currentUser;
+    newSnippet.username = req.session.activeUser;
     newSnippet.title = req.body.title;
     newSnippet.body = req.body.body;
     newSnippet.notes = req.body.notes;

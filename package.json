@@ -9,11 +9,15 @@
     "express": "^4.15.3",
     "express-session": "^1.15.3",
     "express-validator": "^3.2.1",
+    "mocha": "^3.4.2",
     "mongoose": "^4.11.2",
     "morgan": "^1.8.2",
     "mustache-express": "^1.2.5",
     "passport": "^0.3.2",
-    "passport-http": "^0.3.0"
+    "passport-http": "^0.3.0",
+    "supertest": "^3.0.0"
   },
-  "scripts": {}
+  "scripts": {
+    "test": "mocha"
+  }
 }
