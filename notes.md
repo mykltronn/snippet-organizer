@@ -1,10 +1,6 @@
 ## Next up:
 
-- Add tests.
-
 - Deploy on Heroku.
-
-- Add date created to snippetSchema as "date":
 
 ## For Hard Mode:
 

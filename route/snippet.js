@@ -14,9 +14,10 @@ mongoose.Promise = require('bluebird');
 mongoose.connect('mongodb://localhost:27017/snippetdb')
 //===========================================================
 //authentication
+var activeUser
 passport.use(new BasicStrategy(
   function(username, password, done) {
-    req.session.activeUser = username;
+    activeUser = username;
     console.log("basic strategy is running");
     User.findOne( { username: username }, function(err, user){
       if (user && bcrypt.compareSync(password, user.password)){
@@ -37,19 +38,25 @@ router.use(passport.authenticate('basic', {session: false}))
 // routes
 
 // front-end views
-router.route('/view')
-    .get(function(req, res) {
-        Snippet.find(function(err, snippets) {
-          if(err) res.send(err);
-          res.render('view.mustache', {snippets: snippets})
-        })
+router.get('/view', function(req, res) {
+    if(!req.session.activeUser) req.session.activeUser = activeUser
+    Snippet.find(function(err, snippets) {
+        if(err) res.send(err);
+        res.render('view.mustache', {snippets: snippets})
     })
-    // .post(function(req, res) {
-    //
-    // })
+})
+
+router.get('/logout', function(req, res) {
+    req.session.destroy();
+    req.logOut(function(err) {
+        res.redirect("/api");
+    })
+})
+
 
 // get all snippets
 router.get('/', function(req, res) {
+    if(!req.session.activeUser) req.session.activeUser = activeUser
     Snippet.find(function(err, snippets) {
       if(err) res.send(err);
       res.json(snippets);
@@ -58,6 +65,8 @@ router.get('/', function(req, res) {
 
 // post new snippet
 router.post('/', function(req, res) {
+    var date = new Date()
+    if(!req.session.activeUser) req.session.activeUser = activeUser
     const newSnippet = new Snippet();
     newSnippet.username = req.session.activeUser;
     newSnippet.title = req.body.title;
@@ -65,22 +74,25 @@ router.post('/', function(req, res) {
     newSnippet.notes = req.body.notes;
     newSnippet.lang = req.body.lang;
     newSnippet.tags.push(req.body.tag);
+    newSnippet.created_at = date.toDateString();
 
     newSnippet.save(function(err){
-        // if (err) res.send(err)
+        if (err) res.send(err)
         console.log("new snippet added to db");
-        res.redirect('/view')
+        res.redirect('/api/view')
     })
 })
 
 // edit one snippet by :id
 router.put('/:id', function(req, res) {
     Snippet.findById(req.params.id, function(err, snippet){
+        var date = new Date()
         if(req.body.title) snippet.title = req.body.title;
         if(req.body.body) snippet.body = req.body.body;
         if(req.body.notes) snippet.notes = req.body.notes;
         if(req.body.lang) snippet.lang = req.body.lang.toLowerCase();
         if(req.body.tag) snippet.tags.push(req.body.tag.toLowerCase());
+        snippet.modified_at = date.toDateString();
 
         snippet.save(function(err){
             if (err) res.send(err)

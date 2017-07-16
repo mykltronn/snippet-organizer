@@ -15,9 +15,11 @@
     "mustache-express": "^1.2.5",
     "passport": "^0.3.2",
     "passport-http": "^0.3.0",
+    "pg": "^6.4.1",
     "supertest": "^3.0.0"
   },
   "scripts": {
+    "start": "node app.js",
     "test": "mocha"
   }
 }

@@ -7,7 +7,9 @@ const snippetSchema = new mongoose.Schema({
   "notes": String,
   "lang": {type: String, required: true},
   "tags": [String],
-  "stared": [String]
+  "stared": [String],
+  "created_at": Date,
+  "modified_at": Date
 })
 
 const Snippet = mongoose.model('Snippet', snippetSchema);
