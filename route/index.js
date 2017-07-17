@@ -6,7 +6,7 @@ const Snippet = require('../model/snippetSchema.js');
 const User = require('../model/userSchema.js');
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
-mongoose.connect(EVN['MONGODB_URI'])
+mongoose.connect(ENV['MONGODB_URI'])
 // dev mongoose.connect('mongodb://localhost:27017/snippetdb');
 //===============================
 // middleware
