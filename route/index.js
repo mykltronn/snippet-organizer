@@ -7,7 +7,7 @@ const User = require('../model/userSchema.js');
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 // dev mongoose.connect('mongodb://localhost:27017/snippetdb');
-mongoose.connect('mongodb://<dbuser>:<dbpassword>@ds043982.mlab.com:43982/snippetdb')
+mongoose.connect('mongodb://mykltronn:jKT9HU9tKB47@ds043982.mlab.com:43982/snippetdb')
 //===============================
 // middleware
 router.use(bodyParser.urlencoded({ extended : false }));
