@@ -27,7 +27,7 @@ router.route('/')
         newUser.email = req.body.email;
 
         newUser.save(function(err){
-            if (err) res.send(err)
+            if (err) res.send('Validation goes here')
             else {
                 console.log("new user added to db");
                 req.session.registered = true
