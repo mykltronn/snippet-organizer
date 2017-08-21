@@ -5,6 +5,12 @@ const morgan = require('morgan');
 const route = require('./route/index.js')
 const mustacheExpress = require('mustache-express');
 const session = require('express-session')
+const mongoose = require('mongoose');
+//===============================
+// mongoose and mLab setup
+const dbPassword = ''
+mongoose.Promise = require('bluebird');
+mongoose.connect('mongodb://mykltronn:<dbpassword>@ds043982.mlab.com:43982/snippetdb');
 //===============================
 // middleware
 app.engine('mustache', mustacheExpress());
