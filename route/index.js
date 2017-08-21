@@ -4,6 +4,9 @@ const route = require('./snippet.js');
 const bodyParser = require('body-parser');
 const Snippet = require('../model/snippetSchema.js');
 const User = require('../model/userSchema.js');
+// const mongoose = require('mongoose');
+// mongoose.Promise = require('bluebird');
+// mongoose.connect('mongodb://localhost:27017/snippetdb')
 //===============================
 // middleware
 router.use(bodyParser.urlencoded({ extended : false }));

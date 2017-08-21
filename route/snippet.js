@@ -9,9 +9,9 @@ const User = require('../model/userSchema.js')
 const passport = require('passport');
 const BasicStrategy = require('passport-http').BasicStrategy;
 const bcrypt = require('bcryptjs')
-const mongoose = require('mongoose');
-mongoose.Promise = require('bluebird');
-mongoose.connect('mongodb://localhost:27017/snippetdb')
+// const mongoose = require('mongoose');
+// mongoose.Promise = require('bluebird');
+// mongoose.connect('mongodb://localhost:27017/snippetdb')
 //===========================================================
 //authentication
 var activeUser;
@@ -66,7 +66,6 @@ router.post('/', function(req, res) {
     newSnippet.notes = req.body.notes;
     newSnippet.lang = req.body.lang;
     newSnippet.tags.push(req.body.tag);
-    console.log(newSn);
     newSnippet.save(function(err){
         if (err) res.send(err)
         console.log("new snippet added to db");
