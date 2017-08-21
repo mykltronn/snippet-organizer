@@ -66,11 +66,11 @@ router.post('/', function(req, res) {
     newSnippet.notes = req.body.notes;
     newSnippet.lang = req.body.lang;
     newSnippet.tags.push(req.body.tag);
-
+    console.log(newSn);
     newSnippet.save(function(err){
-        // if (err) res.send(err)
+        if (err) res.send(err)
         console.log("new snippet added to db");
-        res.redirect('/view')
+        res.redirect('/api/snippet/view')
     })
 })
 

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const snippetSchema = new mongoose.Schema({
-  "username": {type: String, unique: true},
+  "username": {type: String},
   "title": {type: String, required: true},
   "body": {type: String, required: true},
   "notes": String,
